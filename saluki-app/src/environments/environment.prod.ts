@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  salukiURL: 'localhost:3000/',
 };
