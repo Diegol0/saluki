@@ -24,6 +24,6 @@ export class AppController {
   @UseGuards(JwtAuthGuard)
   @Get('auth/verifyToken')
   async verifyToken() {
-    return;
+    return { isLogged: true };
   }
 }
