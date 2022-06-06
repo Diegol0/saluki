@@ -10,6 +10,6 @@ export class ErrorHandlerService {
   handleError(error: Response | any): any {
     if (error.status === 401 || error.status === 403)
       this.router.navigate(['login']);
-    alert(error.message);
+    console.log(error.message);
   }
 }
