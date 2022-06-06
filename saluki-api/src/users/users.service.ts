@@ -23,8 +23,8 @@ export class UsersService {
     return this.userModel.findOne({ _id: id }).exec();
   }
 
-  async findOneByUserName(userName: string): Promise<User> {
-    return this.userModel.findOne({ _userName: userName }).exec();
+  async findOneByUserName(username: string): Promise<User> {
+    return this.userModel.findOne({ _username: username }).exec();
   }
 
   async delete(id: string) {

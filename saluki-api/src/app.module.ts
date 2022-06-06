@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
     MongooseModule.forRoot(
-      'mongodb+srv://saluki-user:KXnmXlB3NwERkpwQ@saluki.snaxmeb.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb+srv://saluki-user:KXnmXlB3NwERkpwQ@saluki.snaxmeb.mongodb.net/saluki?retryWrites=true&w=majority',
     ),
   ],
   controllers: [AppController],

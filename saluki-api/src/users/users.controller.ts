@@ -21,9 +21,4 @@ export class UsersController {
   async findOne(@Param('id') id: string): Promise<User> {
     return this.usersService.findOne(id);
   }
-
-  @Delete(':id')
-  async delete(@Param('id') id: string) {
-    return this.usersService.delete(id);
-  }
 }

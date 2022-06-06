@@ -9,10 +9,10 @@ export class User {
   name: string;
 
   @Prop({ required: true })
-  lastName: string;
+  lastname: string;
 
   @Prop({ required: true })
-  userName: string;
+  username: string;
 
   @Prop({ required: true })
   password: string;
