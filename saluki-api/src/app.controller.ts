@@ -18,13 +18,12 @@ export class AppController {
 
   @Post('auth/login')
   async login(@Body() loginUserDto: LoginUserDto) {
-    console.log(loginUserDto);
     return this.authService.login(loginUserDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('/profile')
-  getProfile(@Body() req) {
-    return req;
+  @Get('auth/verifyToken')
+  async verifyToken() {
+    return;
   }
 }
