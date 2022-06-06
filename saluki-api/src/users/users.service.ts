@@ -23,8 +23,17 @@ export class UsersService {
     return this.userModel.findOne({ _id: id }).exec();
   }
 
+  // async findOneAndUpdateBreed(user: User): Promise<UserDocument> {
+  //   return this.userModel
+  //     .findOneAndUpdate(
+  //       { _id: user._id },
+  //       { favoriteBreed: user.favoriteBreed },
+  //     )
+  //     .exec();
+  // }
+
   async findOneByUserName(username: string): Promise<User> {
-    return this.userModel.findOne({ _username: username }).exec();
+    return this.userModel.findOne({ username: username }).exec();
   }
 
   async delete(id: string) {
