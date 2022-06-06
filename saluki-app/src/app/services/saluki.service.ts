@@ -23,4 +23,8 @@ export class SalukiService {
         )
       );
   }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
 }

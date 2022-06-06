@@ -19,9 +19,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     let user: LoginUserDto = this.loginForm.getRawValue()!;
-    this.salukiService.login(user).subscribe((data) => {
-      // Todo: Store JWT for future requests
-      console.log(data);
+    this.salukiService.login(user).subscribe((data: any) => {
+      if (data) {
+        localStorage.setItem('token', data.access_token);
+      }
     });
   }
 }
