@@ -1,28 +1,26 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, Router, UrlTree } from '@angular/router';
+import { Observable, take } from 'rxjs';
+import { SalukiService } from './services/saluki.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private salukiService: SalukiService) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
+  canActivate():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.router.navigate(['login']);
+    this.salukiService
+      .verifyToken()
+      .pipe(take(1))
+      .subscribe((data: any) => {
+        debugger
+        return data == null;
+      });
     return false;
   }
 }

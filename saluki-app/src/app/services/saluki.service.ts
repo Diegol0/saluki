@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -26,5 +30,19 @@ export class SalukiService {
 
   logout() {
     localStorage.removeItem('token');
+  }
+
+  verifyToken() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this.http
+      .get(environment.salukiURL + 'auth/verifyToken', { headers: headers })
+      .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.errorHandlerService.handleError(error)
+        )
+      );
   }
 }

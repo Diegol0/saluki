@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { take } from 'rxjs';
 import { LoginUserDto } from '../models/service.dto';
 import { SalukiService } from '../services/saluki.service';
 
@@ -19,10 +20,13 @@ export class LoginComponent implements OnInit {
 
   login() {
     let user: LoginUserDto = this.loginForm.getRawValue()!;
-    this.salukiService.login(user).subscribe((data: any) => {
-      if (data) {
-        localStorage.setItem('token', data.access_token);
-      }
-    });
+    this.salukiService
+      .login(user)
+      .pipe(take(1))
+      .subscribe((data: any) => {
+        if (data) {
+          localStorage.setItem('token', data.access_token);
+        }
+      });
   }
 }
