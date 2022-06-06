@@ -1,28 +1,28 @@
 export interface LoginUserDto {
-  username: string;
-  password: string;
+  username?: string | null;
+  password?: string | null;
 }
 
 export interface CreateUserDto {
-  name: string;
-  lastName: string;
-  username: string;
-  password: string;
-  email: string;
-  favoriteBreed: string;
+  name?: string | null;
+  lastName?: string | null;
+  username?: string | null;
+  password?: string | null;
+  email?: string | null;
+  favoriteBreed?: string | null;
 }
 
 export interface UpdateUserBreedDto {
-  _id: string;
-  favoriteBreed: string;
+  _id?: string | null;
+  favoriteBreed?: string | null;
 }
 
 export interface UserDto {
-  _id: string;
-  name: string;
-  lastName: string;
-  username: string;
-  password: string;
-  email: string;
-  favoriteBreed: string;
+  _id?: string | null;
+  name?: string | null;
+  lastName?: string | null;
+  username?: string | null;
+  password?: string | null;
+  email?: string | null;
+  favoriteBreed?: string | null;
 }
