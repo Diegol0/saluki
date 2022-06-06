@@ -21,9 +21,11 @@ export class AuthService {
         user.password,
       );
       if (isMatch) {
+        user.password = null;
         const payload = { username: loginUserDto.username };
         return {
           access_token: this.jwtService.sign(payload),
+          user: user,
         };
       }
     }
