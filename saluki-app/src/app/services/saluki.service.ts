@@ -16,7 +16,7 @@ export class SalukiService {
 
   login(user: LoginUserDto) {
     return this.http
-      .post<UserDto>(environment.salukiURL + '/auth/login', user)
+      .post<UserDto>(environment.salukiURL + 'auth/login', user)
       .pipe(
         catchError((error: HttpErrorResponse) =>
           this.errorHandlerService.handleError(error)

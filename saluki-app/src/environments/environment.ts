@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  salukiURL: 'localhost:3000/',
+  salukiURL: 'http://localhost:3000/',
 };
 
 /*
