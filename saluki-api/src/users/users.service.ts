@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateUserDto } from './.dto/create-user.dto';
+import { UpdateUserBreedDto } from './.dto/update-user.dto';
 import { User, UserDocument } from './schemas/users.schema';
 
 @Injectable()
@@ -12,28 +13,39 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const createdUser = await this.userModel.create(createUserDto);
+    createdUser.password = null;
     return createdUser;
   }
 
-  async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async findOneAndUpdateBreed(
+    updateUserBreedDTO: UpdateUserBreedDto,
+  ): Promise<UserDocument> {
+    const updatedUser = await this.userModel
+      .findOneAndUpdate(
+        { _id: updateUserBreedDTO._id },
+        { favoriteBreed: updateUserBreedDTO.favoriteBreed },
+        { new: true },
+      )
+      .exec();
+    updatedUser.password = null;
+    return updatedUser;
   }
-
-  async findOne(id: string): Promise<User> {
-    return this.userModel.findOne({ _id: id }).exec();
-  }
-
-  // async findOneAndUpdateBreed(user: User): Promise<UserDocument> {
-  //   return this.userModel
-  //     .findOneAndUpdate(
-  //       { _id: user._id },
-  //       { favoriteBreed: user.favoriteBreed },
-  //     )
-  //     .exec();
-  // }
 
   async findOneByUserName(username: string): Promise<User> {
     return this.userModel.findOne({ username: username }).exec();
+  }
+
+  async isUserUnique(createUserDto: CreateUserDto): Promise<boolean> {
+    const existUser = await this.userModel
+      .exists({
+        $or: [
+          { username: createUserDto.username },
+          { email: createUserDto.email },
+        ],
+      })
+      .exec();
+    console.log(existUser);
+    return existUser?._id == null;
   }
 
   async delete(id: string) {
