@@ -4,6 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreateUserDto, LoginUserDto, UserDto } from '../models/service.dto';
@@ -18,7 +19,8 @@ export class SalukiService {
 
   constructor(
     private readonly errorHandlerService: ErrorHandlerService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   get isLoggedIn() {
@@ -26,6 +28,9 @@ export class SalukiService {
   }
 
   get getLoggedUser() {
+    if (!this.loggedUser.value) {
+      this.router.navigate(['login']);
+    }
     return this.loggedUser.asObservable();
   }
 
