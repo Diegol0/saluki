@@ -1,0 +1,43 @@
+<div class="container">
+  <p class="mat-display-1">{{ breed }}</p>
+  <p class="mat-title">Breed:</p>
+  <div class="breed-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ breed }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{ img }}" style="margin: auto" />
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openParentBreedDialog(breed)"
+        >
+          View
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <hr />
+  <p class="mat-title">Sub-Breed:</p>
+  <div class="breed-container">
+    <span *ngFor="let sBreed of subBreeds"
+      ><mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ sBreed.displayName }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{ sBreed.img }}" style="margin: auto" />
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openDialog(sBreed)"
+          >
+            View
+          </button>
+        </mat-card-actions>
+      </mat-card></span
+    >
+  </div>
+</div>
