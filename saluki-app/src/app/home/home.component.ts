@@ -10,7 +10,7 @@ import { SalukiService } from '../services/saluki.service';
 })
 export class HomeComponent implements OnInit {
   user: UserDto | null = null;
-  constructor(private salukiService: SalukiService, private router: Router) {
+  constructor(private salukiService: SalukiService) {
     this.salukiService.getLoggedUser.subscribe((user: any) => {
       this.user = user;
     });
