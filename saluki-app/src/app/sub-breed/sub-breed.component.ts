@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
+import { BreedPopupComponent } from '../breed-popup/breed-popup.component';
 import { BreedService } from '../breed.service';
 import { UserDto } from '../models/service.dto';
 import { SalukiService } from '../services/saluki.service';
@@ -17,6 +19,7 @@ export class SubBreedComponent implements OnInit {
   subBreeds: any[] = [];
 
   constructor(
+    public dialog: MatDialog,
     private breedService: BreedService,
     private route: ActivatedRoute,
     private router: Router,
@@ -52,6 +55,7 @@ export class SubBreedComponent implements OnInit {
                         ' ' +
                         params['breed'],
                       img: data.message,
+                      fullBreed: this.breed.toLowerCase() + '/' + e,
                     });
                   });
               });
@@ -65,5 +69,17 @@ export class SubBreedComponent implements OnInit {
     console.log(this.subBreeds);
   }
 
-  loadImage(subBreed: string) {}
+  openDialog(breed: any) {
+    this.breedService
+      .getAllBreedImage(breed.fullBreed)
+      .pipe(take(1))
+      .subscribe((data: any) => {
+        this.dialog.open(BreedPopupComponent, {
+          data: {
+            breed: breed,
+            images: data.message,
+          },
+        });
+      });
+  }
 }

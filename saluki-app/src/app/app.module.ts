@@ -12,9 +12,18 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { BreedComponent } from './breed/breed.component';
 import { SubBreedComponent } from './sub-breed/sub-breed.component';
+import { BreedPopupComponent } from './breed-popup/breed-popup.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent, BreedComponent, SubBreedComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    HomeComponent,
+    BreedComponent,
+    SubBreedComponent,
+    BreedPopupComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

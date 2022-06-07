@@ -1,14 +1,15 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>🐕</span>
-    <span>Saluki</span>
+    <button mat-button [routerLink]="'/home'" style="font-size: 30px;">
+      🐕 Saluki
+    </button>
     <span class="t-spacer"></span>
     <span *ngIf="salukiService.isLoggedIn | async"
       ><button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Home</button>
+        <button mat-menu-item [routerLink]="'/home'">Home</button>
         <button
           mat-menu-item
           (click)="salukiService.logout()"

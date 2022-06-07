@@ -1,0 +1,12 @@
+<h1>{{ breed.breed.displayName }}</h1>
+<mat-dialog-content class="mat-typography">
+  <div class="breed-container">
+    <span *ngFor="let img of breed.images | slice: 0:3" class="container">
+      <img src="{{ img }}" style="margin: auto" />
+    </span>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary">Favorite</button>
+  <button mat-raised-button mat-dialog-close color="secundary">Close</button>
+</div>

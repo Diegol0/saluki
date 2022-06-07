@@ -16,14 +16,20 @@
   <hr />
   <p class="mat-title">Sub-Breed:</p>
   <div class="breed-container">
-    <span *ngFor="let breed of subBreeds"
+    <span *ngFor="let sBreed of subBreeds"
       ><mat-card>
         <mat-card-header>
-          <mat-card-title>{{ breed.displayName }}</mat-card-title>
+          <mat-card-title>{{ sBreed.displayName }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="{{ breed.img }}" style="margin: auto" />
+        <img mat-card-image src="{{ sBreed.img }}" style="margin: auto" />
         <mat-card-actions>
-          <button mat-raised-button color="primary">View</button>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="openDialog(sBreed)"
+          >
+            View
+          </button>
         </mat-card-actions>
       </mat-card></span
     >

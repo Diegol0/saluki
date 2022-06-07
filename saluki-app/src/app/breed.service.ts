@@ -33,9 +33,9 @@ export class BreedService {
       );
   }
 
-  listSubBreedImage(breed: string, subBreed: string) {
+  getAllBreedImage(breed: string) {
     return this.http
-      .get<any>(environment.breedURL + `breed/${breed}/${subBreed}/images`)
+      .get<any>(environment.breedURL + `breed/${breed}/images`)
       .pipe(
         catchError((error: HttpErrorResponse) =>
           this.errorHandlerService.handleError(error)
