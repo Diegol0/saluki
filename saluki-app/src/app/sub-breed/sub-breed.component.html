@@ -8,7 +8,13 @@
       </mat-card-header>
       <img mat-card-image src="{{ img }}" style="margin: auto" />
       <mat-card-actions>
-        <button mat-raised-button color="primary">View</button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openParentBreedDialog(breed)"
+        >
+          View
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

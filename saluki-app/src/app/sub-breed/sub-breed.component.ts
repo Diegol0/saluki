@@ -69,6 +69,10 @@ export class SubBreedComponent implements OnInit {
     console.log(this.subBreeds);
   }
 
+  openParentBreedDialog(breed: string) {
+    this.openDialog({ displayName: breed, fullBreed: breed.toLowerCase() });
+  }
+
   openDialog(breed: any) {
     this.breedService
       .getAllBreedImage(breed.fullBreed)

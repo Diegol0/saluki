@@ -7,7 +7,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CreateUserDto, LoginUserDto, UserDto } from '../models/service.dto';
+import {
+  CreateUserDto,
+  LoginUserDto,
+  UpdateUserBreedDto,
+  UserDto,
+} from '../models/service.dto';
 import { ErrorHandlerService } from './error-handler/error-handler.service';
 
 @Injectable({
@@ -55,6 +60,20 @@ export class SalukiService {
   signup(user: CreateUserDto) {
     return this.http
       .post<UserDto>(environment.salukiURL + 'users', user)
+      .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.errorHandlerService.handleError(error)
+        )
+      );
+  }
+
+  saveFavorite(user: UpdateUserBreedDto) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    return this.http
+      .put<any>(environment.salukiURL + 'users', user, { headers: headers })
       .pipe(
         catchError((error: HttpErrorResponse) =>
           this.errorHandlerService.handleError(error)
