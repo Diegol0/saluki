@@ -8,8 +8,9 @@ import { BreedService } from '../breed.service';
   styleUrls: ['./breed.component.scss'],
 })
 export class BreedComponent implements OnInit {
+  filteredBreeds: any[] = [];
   breeds: any[] = [];
-
+  value: string = '';
   constructor(private breedService: BreedService) {}
 
   ngOnInit(): void {
@@ -24,6 +25,17 @@ export class BreedComponent implements OnInit {
             subBreeds: data.message[key],
           });
         }
+        this.filteredBreeds = this.breeds;
       });
+  }
+
+  filter() {
+    if (this.value) {
+      this.filteredBreeds = this.breeds.filter((breed) =>
+        String(breed.breed).toLowerCase().includes(this.value.toLowerCase())
+      );
+    } else {
+      this.filteredBreeds = this.breeds;
+    }
   }
 }

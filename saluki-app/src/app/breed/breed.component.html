@@ -1,5 +1,21 @@
 <div class="container">
-  <span *ngFor="let breed of breeds"
+  <mat-form-field class="example-form-field" appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" [(ngModel)]="value" (input)="filter()" />
+    <button
+      *ngIf="value"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="value = '';filter();"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div class="container">
+  <span *ngFor="let breed of filteredBreeds"
     ><button
       mat-raised-button
       color="secundary"
