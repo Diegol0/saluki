@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable, take } from 'rxjs';
-import { SalukiService } from './services/saluki.service';
+import { map, Observable, take } from 'rxjs';
+import { SalukiService } from './saluki.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +14,14 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.salukiService
+    return this.salukiService
       .verifyToken()
       .pipe(take(1))
-      .subscribe((data: any) => {
-        debugger
-        return data == null;
-      });
-    return false;
+      .pipe(
+        map((data: any) => {
+          debugger
+          return data && data.isLogged;
+        })
+      );
   }
 }
