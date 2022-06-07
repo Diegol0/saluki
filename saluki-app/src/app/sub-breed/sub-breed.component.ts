@@ -13,6 +13,7 @@ import { SalukiService } from '../services/saluki.service';
 export class SubBreedComponent implements OnInit {
   user: UserDto | null = null;
   breed: string = '';
+  img: string = '';
   subBreeds: any[] = [];
 
   constructor(
@@ -26,8 +27,14 @@ export class SubBreedComponent implements OnInit {
     this.salukiService.getLoggedUser.subscribe((user: any) => {
       this.user = user;
       this.route.params.subscribe((params) => {
+        this.breed = params['breed'];
         if (params['breed']) {
-          this.breed = params['breed'];
+          this.breedService
+            .getBreedImage(this.breed.toLowerCase())
+            .pipe(take(1))
+            .subscribe((data: any) => {
+              this.img = data.message;
+            });
           this.breedService
             .listSubBreed(String(params['breed']).toLowerCase())
             .pipe(take(1))
