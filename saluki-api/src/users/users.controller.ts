@@ -24,6 +24,7 @@ export class UsersController {
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(createUserDto.password, salt);
       createUserDto.password = hashedPassword;
+      if (!createUserDto.username) createUserDto.username = createUserDto.email;
       return this.usersService.create(createUserDto);
     } else {
       throw new HttpException(
