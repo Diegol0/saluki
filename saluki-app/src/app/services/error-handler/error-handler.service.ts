@@ -11,7 +11,7 @@ export class ErrorHandlerService {
   handleError(error: Response | any): any {
     if (error.status === 401 || error.status === 403) {
       console.log();
-      if (this.router.url != '/login') {
+      if (!this.router.url.includes('login')) {
         alert('Invalid session, redirecting to Login');
         this.router.navigate(['login']);
       } else {
