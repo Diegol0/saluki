@@ -1,0 +1,23 @@
+.breed-container {
+  text-align: center;
+}
+
+.container {
+  padding: 2em;
+  margin: 2em;
+}
+
+img {
+  max-width: 200px;
+  max-height: 200px;
+  width: 200px;
+  border-radius: 20%;
+  height: 200px;
+  object-fit: cover;
+  padding: 2em;
+  margin: 2em;
+}
+
+.mat-dialog-actions {
+  place-content: end;
+}

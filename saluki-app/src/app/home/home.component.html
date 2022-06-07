@@ -1,0 +1,26 @@
+<div class="container">
+  <p class="mat-display-1">Welcome {{ user?.name }}</p>
+  <hr />
+  <p class="mat-title">Favorite Sub-Breed:</p>
+  <div *ngIf="user?.favoriteBreed">
+    <div class="breed-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ displayNameBreed }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{ img }}" style="margin: auto" />
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="!user?.favoriteBreed" class="info">
+    <div class="alert">
+      <strong>Info!</strong>
+      Currently you do not have a favorite breed, please use the options below
+      to select one.
+    </div>
+  </div>
+  <hr />
+  <p class="mat-title">Here is a list of dog breeds:</p>
+  <p class="mat-subheading-1">Click on any of them to see the sub-breeds</p>
+  <app-breed></app-breed>
+</div>
