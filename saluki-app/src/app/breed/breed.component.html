@@ -1,12 +1,14 @@
 <div class="container">
-  <button
-    mat-raised-button
-    color="secundary"
-    type="submit"
-    *ngFor="let breed of breeds"
-    class="breed"
+  <span *ngFor="let breed of breeds"
+    ><button
+      mat-raised-button
+      color="secundary"
+      type="submit"
+      class="breed"
+      [routerLink]="['/breed/' + breed.breed]"
+    >
+      {{ breed.breed }}
+      <mat-icon style="margin-right: 8px">pets</mat-icon>
+    </button></span
   >
-    {{ breed.breed }}
-    <mat-icon style="margin-right:8px">pets</mat-icon>
-  </button>
 </div>

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sub-breed',
   templateUrl: './sub-breed.component.html',
-  styleUrls: ['./sub-breed.component.scss']
+  styleUrls: ['./sub-breed.component.scss'],
 })
 export class SubBreedComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
