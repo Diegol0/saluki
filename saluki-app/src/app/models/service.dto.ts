@@ -5,7 +5,7 @@ export interface LoginUserDto {
 
 export interface CreateUserDto {
   name?: string | null;
-  lastName?: string | null;
+  lastname?: string | null;
   username?: string | null;
   password?: string | null;
   email?: string | null;
