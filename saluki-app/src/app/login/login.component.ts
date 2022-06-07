@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       .pipe(take(1))
       .subscribe((data: any) => {
         if (data) {
+          this.salukiService.setLoggedIn(true);
           localStorage.setItem('token', data.access_token);
           this.router.navigate(['home']);
         }

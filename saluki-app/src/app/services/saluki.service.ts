@@ -4,7 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CreateUserDto, LoginUserDto, UserDto } from '../models/service.dto';
 import { ErrorHandlerService } from './error-handler/error-handler.service';
@@ -13,10 +13,20 @@ import { ErrorHandlerService } from './error-handler/error-handler.service';
   providedIn: 'root',
 })
 export class SalukiService {
+  private readonly loggedIn = new BehaviorSubject<boolean>(false);
+
   constructor(
     private readonly errorHandlerService: ErrorHandlerService,
     private http: HttpClient
   ) {}
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  setLoggedIn(value: boolean) {
+    this.loggedIn.next(value);
+  }
 
   login(user: LoginUserDto) {
     return this.http
@@ -40,6 +50,7 @@ export class SalukiService {
 
   logout() {
     localStorage.removeItem('token');
+    this.setLoggedIn(false);
   }
 
   verifyToken() {
