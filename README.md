@@ -1,5 +1,7 @@
 # Saluki
-Dog breeds application
+Dog breeds application.
+
+Meaning: According to the Guinness World Records, the world's oldest known breed of domesticated dog is the saluki, believed to have emerged in 329 BC.
 
 ## Execution locally
 
