@@ -1,7 +1,7 @@
 <div class="container">
-  <p class="mat-title">Welcome {{ user?.name }}</p>
+  <p class="mat-display-1">Welcome {{ user?.name }}</p>
   <hr />
-  <p class="mat-subheading-1">Favorite Sub-Breed:</p>
+  <p class="mat-title">Favorite Sub-Breed:</p>
   <div *ngIf="user?.favoriteBreed">{{ user?.favoriteBreed }}</div>
   <div *ngIf="!user?.favoriteBreed" class="info">
     <div class="alert">
@@ -11,5 +11,7 @@
     </div>
   </div>
   <hr />
-  <p class="mat-subheading-1">Here is a list of Breeds</p>
+  <p class="mat-title">Here is a list of dog breeds:</p>
+  <p class="mat-subheading-1">Click on any of them to see the sub-breeds</p>
+  <app-breed></app-breed>
 </div>

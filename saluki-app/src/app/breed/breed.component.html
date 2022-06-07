@@ -1,1 +1,12 @@
-<p>breed works!</p>
+<div class="container">
+  <button
+    mat-raised-button
+    color="secundary"
+    type="submit"
+    *ngFor="let breed of breeds"
+    class="breed"
+  >
+    {{ breed.breed }}
+    <mat-icon style="margin-right:8px">pets</mat-icon>
+  </button>
+</div>
