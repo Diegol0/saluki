@@ -27,9 +27,9 @@ export class SubBreedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.salukiService.getLoggedUser.subscribe((user: any) => {
+    this.salukiService.getLoggedUser.pipe(take(1)).subscribe((user: any) => {
       this.user = user;
-      this.route.params.subscribe((params) => {
+      this.route.params.pipe(take(1)).subscribe((params) => {
         this.breed = params['breed'];
         if (params['breed']) {
           this.breedService
