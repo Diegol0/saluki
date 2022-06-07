@@ -10,4 +10,8 @@ export class BreedPopupComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public breed: any) {}
 
   ngOnInit(): void {}
+
+  setAsFavorite(){
+    
+  }
 }
