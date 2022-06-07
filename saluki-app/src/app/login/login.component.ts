@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', data.access_token);
           this.salukiService.setLoggedUser(data.user);
           this.router.navigate(['home']);
-          this.alertService.showAlert('Welcome');
         }
       });
   }
