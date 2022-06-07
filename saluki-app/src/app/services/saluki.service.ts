@@ -14,6 +14,7 @@ import { ErrorHandlerService } from './error-handler/error-handler.service';
 })
 export class SalukiService {
   private readonly loggedIn = new BehaviorSubject<boolean>(false);
+  private readonly loggedUser = new BehaviorSubject<any>(null);
 
   constructor(
     private readonly errorHandlerService: ErrorHandlerService,
@@ -24,8 +25,16 @@ export class SalukiService {
     return this.loggedIn.asObservable();
   }
 
+  get getLoggedUser() {
+    return this.loggedUser.asObservable();
+  }
+
   setLoggedIn(value: boolean) {
     this.loggedIn.next(value);
+  }
+
+  setLoggedUser(value: any) {
+    this.loggedUser.next(value);
   }
 
   login(user: LoginUserDto) {
