@@ -17,7 +17,6 @@ export class BreedPopupComponent implements OnInit {
     private salukiService: SalukiService,
     private alertService: AlertService
   ) {
-    debugger;
     this.salukiService.getLoggedUser.pipe(take(1)).subscribe((user: any) => {
       this.userLogged = user;
     });
