@@ -11,6 +11,14 @@ cd saluki-api
 nest start
 ```
 
+Install the angular dependencies by running npm install inside the [saluki-app](saluki-app) folder
+Application will run at http://localhost:4200
+
+```bash
+cd saluki-app
+npm install
+```
+
 Execute the angular application inside the [saluki-app](saluki-app) folder
 Application will run at http://localhost:4200
 
