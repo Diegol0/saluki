@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   ) {
     this.salukiService.getLoggedUser.pipe(take(1)).subscribe((user: any) => {
       this.user = user;
-      if (user.favoriteBreed) {
+      if (user && user.favoriteBreed) {
         if (String(user.favoriteBreed).includes('/')) {
           let breedName = String(user.favoriteBreed).split('/');
           this.displayNameBreed =

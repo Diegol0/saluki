@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { forkJoin, map, Observable, take } from 'rxjs';
 import { BreedService } from '../breed.service';
 
 @Component({
@@ -11,6 +11,8 @@ export class BreedComponent implements OnInit {
   filteredBreeds: any[] = [];
   breeds: any[] = [];
   value: string = '';
+  showImages: boolean = false;
+
   constructor(private breedService: BreedService) {}
 
   ngOnInit(): void {
@@ -23,6 +25,7 @@ export class BreedComponent implements OnInit {
           this.breeds.push({
             breed: key.charAt(0).toUpperCase() + key.slice(1),
             subBreeds: data.message[key],
+            img: null,
           });
         }
         this.filteredBreeds = this.breeds;
@@ -36,6 +39,30 @@ export class BreedComponent implements OnInit {
       );
     } else {
       this.filteredBreeds = this.breeds;
+    }
+  }
+
+  showAsImages() {
+    if (this.showImages) {
+      let obs: Observable<any>[] = new Array();
+      this.breeds.forEach((breed) => {
+        obs.push(
+          this.breedService
+            .getSingleBreedImage(String(breed.breed).toLowerCase())
+            .pipe(map((value) => ({ type: breed.breed, value: value })))
+        );
+      });
+      forkJoin(obs).subscribe((data: any) => {
+        this.breeds = [];
+        data.forEach((d: any) => {
+          this.breeds.push({
+            breed: d.type,
+            img: d.value.message,
+          });
+        });
+        this.filteredBreeds = this.breeds;
+      });
+      this.value = '';
     }
   }
 }
