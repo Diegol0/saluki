@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
       .pipe(take(1))
       .pipe(
         map((data: any) => {
+          this.salukiService.setLoggedIn(true);
           return data && data.isLogged;
         })
       );
