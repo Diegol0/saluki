@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="container">
+  <p class="mat-title">Welcome {{ user?.name }}</p>
+  <hr />
+  <p class="mat-subheading-1">Favorite Sub-Breed:</p>
+  <div *ngIf="user?.favoriteBreed">{{ user?.favoriteBreed }}</div>
+  <div *ngIf="!user?.favoriteBreed" class="info">
+    <div class="alert">
+      <strong>Info!</strong>
+      Currently you do not have a favorite breed, please use the options below
+      to select one.
+    </div>
+  </div>
+  <hr />
+  <p class="mat-subheading-1">Here is a list of Breeds</p>
+</div>

@@ -1,0 +1,22 @@
+.container {
+  margin: 2em;
+  padding: 1em;
+  background-color: white;
+}
+
+hr {
+  background: linear-gradient(to right, #3f51b5, rgb(152, 234, 255));
+  height: 1px;
+}
+
+.info {
+  padding: 0% 10%;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #2196f3;
+  color: white;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
