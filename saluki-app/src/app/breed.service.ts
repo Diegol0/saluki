@@ -42,4 +42,14 @@ export class BreedService {
         )
       );
   }
+
+  getSubBreedImage(breed: string, subBreed: string) {
+    return this.http
+      .get<any>(environment.breedURL + `breed/${breed}/${subBreed}/images/random`)
+      .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.errorHandlerService.handleError(error)
+        )
+      );
+  }
 }

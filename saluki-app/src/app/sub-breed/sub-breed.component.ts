@@ -33,14 +33,20 @@ export class SubBreedComponent implements OnInit {
             .pipe(take(1))
             .subscribe((data: any) => {
               data.message.forEach((e: any) => {
-                this.subBreeds.push({
-                  name: e,
-                  displayName:
-                    e.charAt(0).toUpperCase() +
-                    e.slice(1) +
-                    ' ' +
-                    params['breed'],
-                });
+                this.breedService
+                  .getSubBreedImage(this.breed.toLowerCase(), e)
+                  .pipe(take(1))
+                  .subscribe((data: any) => {
+                    this.subBreeds.push({
+                      name: e,
+                      displayName:
+                        e.charAt(0).toUpperCase() +
+                        e.slice(1) +
+                        ' ' +
+                        params['breed'],
+                      img: data.message,
+                    });
+                  });
               });
             });
         } else {
@@ -51,4 +57,6 @@ export class SubBreedComponent implements OnInit {
 
     console.log(this.subBreeds);
   }
+
+  loadImage(subBreed: string) {}
 }
