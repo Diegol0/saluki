@@ -3,9 +3,21 @@
     <span>🐕</span>
     <span>Saluki</span>
     <span class="t-spacer"></span>
-    <button mat-icon-button class="t-icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <span *ngIf="salukiService.isLoggedIn | async"
+      ><button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Home</button>
+        <button
+          mat-menu-item
+          (click)="salukiService.logout()"
+          [routerLink]="'/login'"
+        >
+          Sign Out
+        </button>
+      </mat-menu></span
+    >
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

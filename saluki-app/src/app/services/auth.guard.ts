@@ -19,7 +19,6 @@ export class AuthGuard implements CanActivate {
       .pipe(take(1))
       .pipe(
         map((data: any) => {
-          debugger
           return data && data.isLogged;
         })
       );
