@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   salukiURL: 'http://localhost:3000/',
+  breedURL: ' https://dog.ceo/api/',
 };
 
 /*
