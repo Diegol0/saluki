@@ -5,6 +5,8 @@ Meaning: According to the Guinness World Records, the world's oldest known breed
 
 ## Execution locally
 
+Node version: 
+
 Execute the nest js backend service inside the [saluki-api](saluki-api) folder 
 Service will run at http://localhost:3000
 
